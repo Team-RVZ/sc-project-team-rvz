@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -241,9 +240,8 @@ class Hotel
                 break;
             case 4:System.out.println("Number of single beds : 1\nAC : No\nFree breakfast : Yes\nCharge per day: RM 120 ");
                 break;
-            default:
-                System.out.println("Enter valid option");
-                break;
+            
+                
         }
     }
     
@@ -283,7 +281,6 @@ class Hotel
                 System.out.println("Enter valid option");
                 break;
         }
-        System.out.println("Number of rooms available : "+count);
     }
     
     static void bill(int rn,int rtype) //
@@ -545,8 +542,7 @@ public class Main {
                          Hotel.order(ch2-11,2);
                      else if(ch2>0)
                          Hotel.order(ch2-1,1);
-                     else
-                         System.out.println("Room doesn't exist");
+                     
                      break;
             case 5:
                 System.out.print("Room Number - ");
@@ -589,3 +585,4 @@ public class Main {
 
 
  
+
