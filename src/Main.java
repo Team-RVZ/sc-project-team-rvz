@@ -530,20 +530,21 @@ public class Main {
                      Hotel.bookroom(ch2);
                 break;
             case 4:
-                 System.out.print("Room Number - ");
-                     ch2 = sc.nextInt();
-                     if(ch2>60)
-                         System.out.println("Room doesn't exist");
-                     else if(ch2>40)
-                         Hotel.order(ch2-41,4);
-                     else if(ch2>30)
-                         Hotel.order(ch2-31,3);
-                     else if(ch2>10)
-                         Hotel.order(ch2-11,2);
-                     else if(ch2>0)
-                         Hotel.order(ch2-1,1);
-                     
-                     break;
+                System.out.print("Room Number - ");
+                ch2 = sc.nextInt();
+                if (ch2 > 60)
+                    System.out.println("Room doesn't exist");
+                else if (ch2 > 40)
+                    Hotel.order(ch2 - 41, 4);
+                else if (ch2 > 30)
+                    Hotel.order(ch2 - 31, 3);
+                else if (ch2 > 10)
+                    Hotel.order(ch2 - 11, 2);
+                else if (ch2 > 0)
+                    Hotel.order(ch2 - 1, 1);
+                else
+                    System.out.println("Room doesn't exist");
+                break;
             case 5:
                 System.out.print("Room Number - ");
                      ch2 = sc.nextInt();
