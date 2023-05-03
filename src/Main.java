@@ -281,6 +281,8 @@ class Hotel
                 System.out.println("Enter valid option");
                 break;
         }
+        System.out.println("Number of rooms available : "+count);
+
     }
     
     static void bill(int rn,int rtype) //
