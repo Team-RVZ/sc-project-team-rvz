@@ -239,8 +239,8 @@ class Hotel
             case 3:System.out.println("Number of single beds : 1\nAC : Yes\nFree breakfast : Yes\nCharge per day: RM 220  ");
                 break;
             case 4:System.out.println("Number of single beds : 1\nAC : No\nFree breakfast : Yes\nCharge per day: RM 120 ");
+            System.out.println("Enter valid option");
                 break;
-            
                 
         }
     }
