@@ -7,6 +7,104 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
+
+class Customer {
+    private String customerId;
+    private String name;
+    private String address;
+    private List<Order> orderHistory;
+
+    // Constructor
+    public Customer(String customerId, String name, String address) {
+        this.customerId = customerId;
+        this.name = name;
+        this.address = address;
+        this.orderHistory = new ArrayList<>();
+    }
+
+    // Getters and setters
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public List<Order> getOrderHistory() {
+        return orderHistory;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    // Methods
+    public void editCustomer(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public void deleteCustomer() {
+        // Set all member variables to null to destroy the customer object
+        customerId = null;
+        name = null;
+        address = null;
+        orderHistory = null;
+    }
+
+    public void addOrder(Order order) {
+        orderHistory.add(order);
+    }
+
+    public void printOrderHistory() {
+        System.out.println("Order History for Customer: " + name);
+        for (Order order : orderHistory) {
+            System.out.println("Order ID: " + order.getOrderId());
+            System.out.println("Order Date: " + order.getOrderDate());
+            System.out.println("Order Total: " + order.getOrderTotal());
+            System.out.println("---");
+        }
+    }
+
+static class Order {
+        private String orderId;
+        private String orderDate;
+        private double orderTotal;
+
+        public Order(String orderId, String orderDate, double orderTotal) {
+            this.orderId = orderId;
+            this.orderDate = orderDate;
+            this.orderTotal = orderTotal;
+        }
+
+        public String getOrderId() {
+            return orderId;
+        }
+
+        public String getOrderDate() {
+            return orderDate;
+        }
+
+        public double getOrderTotal() {
+            return orderTotal;
+        }
+    }
+}
+
 
 class Food implements Serializable {
     int itemno;
