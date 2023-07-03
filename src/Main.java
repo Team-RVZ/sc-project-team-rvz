@@ -331,78 +331,79 @@ class Hotel {
         System.out.println("\nTotal Amount - RM " + amount);
     }
 
-    static void deallocate(int rn, int rtype) {
-        int j;
-        char w;
+static void deallocate(int rn, int rtype) {
+    Doubleroom[] luxuryDoublerooms = hotel_ob.luxury_doublerrom;
+    Doubleroom[] deluxeDoublerooms = hotel_ob.deluxe_doublerrom;
+    Singleroom[] luxurySinglerooms = hotel_ob.luxury_singleerrom;
+    Singleroom[] deluxeSinglerooms = hotel_ob.deluxe_singleerrom;
+
+    String roomType;
+
+    switch (rtype) {
+        case 1:
+            if (luxuryDoublerooms[rn] != null) {
+                System.out.println("Room used by " + luxuryDoublerooms[rn].name);
+            } else {
+                System.out.println("Empty Already");
+                return;
+            }
+            roomType = "luxury double";
+            break;
+        case 2:
+            if (deluxeDoublerooms[rn] != null) {
+                System.out.println("Room used by " + deluxeDoublerooms[rn].name);
+            } else {
+                System.out.println("Empty Already");
+                return;
+            }
+            roomType = "deluxe double";
+            break;
+        case 3:
+            if (luxurySinglerooms[rn] != null) {
+                System.out.println("Room used by " + luxurySinglerooms[rn].name);
+            } else {
+                System.out.println("Empty Already");
+                return;
+            }
+            roomType = "luxury single";
+            break;
+        case 4:
+            if (deluxeSinglerooms[rn] != null) {
+                System.out.println("Room used by " + deluxeSinglerooms[rn].name);
+            } else {
+                System.out.println("Empty Already");
+                return;
+            }
+            roomType = "deluxe single";
+            break;
+        default:
+            System.out.println("Enter a valid option");
+            return;
+    }
+
+    System.out.println("Do you want to checkout? (y/n)");
+    char w = sc.next().charAt(0);
+    if (w == 'y' || w == 'Y') {
+        bill(rn, rtype);
+        
         switch (rtype) {
             case 1:
-                if (hotel_ob.luxury_doublerrom[rn] != null)
-                    System.out.println("Room used by " + hotel_ob.luxury_doublerrom[rn].name);
-                else {
-                    System.out.println("Empty Already");
-                    return;
-                }
-                System.out.println("Do you want to checkout ?(y/n)");
-                w = sc.next().charAt(0);
-                if (w == 'y' || w == 'Y') {
-                    bill(rn, rtype);
-                    hotel_ob.luxury_doublerrom[rn] = null;
-                    System.out.println("Deallocated successfully");
-                }
-
+                luxuryDoublerooms[rn] = null;
                 break;
             case 2:
-                if (hotel_ob.deluxe_doublerrom[rn] != null)
-                    System.out.println("Room used by " + hotel_ob.deluxe_doublerrom[rn].name);
-                else {
-                    System.out.println("Empty Already");
-                    return;
-                }
-                System.out.println("Do you want to checkout ?(y/n)");
-                w = sc.next().charAt(0);
-                if (w == 'y' || w == 'Y') {
-                    bill(rn, rtype);
-                    hotel_ob.deluxe_doublerrom[rn] = null;
-                    System.out.println("Deallocated successfully");
-                }
-
+                deluxeDoublerooms[rn] = null;
                 break;
             case 3:
-                if (hotel_ob.luxury_singleerrom[rn] != null)
-                    System.out.println("Room used by " + hotel_ob.luxury_singleerrom[rn].name);
-                else {
-                    System.out.println("Empty Already");
-                    return;
-                }
-                System.out.println("Do you want to checkout ? (y/n)");
-                w = sc.next().charAt(0);
-                if (w == 'y' || w == 'Y') {
-                    bill(rn, rtype);
-                    hotel_ob.luxury_singleerrom[rn] = null;
-                    System.out.println("Deallocated successfully");
-                }
-
+                luxurySinglerooms[rn] = null;
                 break;
             case 4:
-                if (hotel_ob.deluxe_singleerrom[rn] != null)
-                    System.out.println("Room used by " + hotel_ob.deluxe_singleerrom[rn].name);
-                else {
-                    System.out.println("Empty Already");
-                    return;
-                }
-                System.out.println("Do you want to checkout ? (y/n)");
-                w = sc.next().charAt(0);
-                if (w == 'y' || w == 'Y') {
-                    bill(rn, rtype);
-                    hotel_ob.deluxe_singleerrom[rn] = null;
-                    System.out.println("Deallocated successfully");
-                }
-                break;
-            default:
-                System.out.println("\nEnter valid option : ");
+                deluxeSinglerooms[rn] = null;
                 break;
         }
+        
+        System.out.println("Deallocated successfully");
     }
+}
 
     static void order(int rn, int rtype) {
         int i, q;
