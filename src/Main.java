@@ -9,6 +9,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
+class CleaningSchedule {
+    private List<String> schedule;
+
+    public CleaningSchedule() {
+        this.schedule = new ArrayList<>();
+    }
+
+    public List<String> getSchedule() {
+        return schedule;
+    }
+
+    public void addToSchedule(String task) {
+        schedule.add(task);
+    }
+
+    public void deleteFromSchedule(String task) {
+        schedule.remove(task);
+    }
+}
+
 class Customer {
     private String customerId;
     private String name;
