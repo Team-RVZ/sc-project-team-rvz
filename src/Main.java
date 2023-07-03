@@ -129,85 +129,50 @@ class Hotel {
     static void bookroom(int i) {
         int j;
         int rn;
-        System.out.println("\nChoose room number from : ");
+        System.out.println("\nChoose room number from: ");
+        Object[] roomArray = null;
+        int roomNumberOffset = 0;
+
         switch (i) {
             case 1:
-                for (j = 0; j < hotel_ob.luxury_doublerrom.length; j++) {
-                    if (hotel_ob.luxury_doublerrom[j] == null) {
-                        System.out.print(j + 1 + ",");
-                    }
-                }
-                System.out.print("\nEnter room number: ");
-                try {
-                    rn = sc.nextInt();
-                    rn--;
-                    if (hotel_ob.luxury_doublerrom[rn] != null)
-                        throw new NotAvailable();
-                    CustDetails(i, rn);
-                } catch (Exception e) {
-                    System.out.println("Invalid Option");
-                    return;
-                }
+                roomArray = hotel_ob.luxury_doublerrom;
+                roomNumberOffset = 1;
                 break;
             case 2:
-                for (j = 0; j < hotel_ob.deluxe_doublerrom.length; j++) {
-                    if (hotel_ob.deluxe_doublerrom[j] == null) {
-                        System.out.print(j + 11 + ",");
-                    }
-                }
-                System.out.print("\nEnter room number: ");
-                try {
-                    rn = sc.nextInt();
-                    rn = rn - 11;
-                    if (hotel_ob.deluxe_doublerrom[rn] != null)
-                        throw new NotAvailable();
-                    CustDetails(i, rn);
-                } catch (Exception e) {
-                    System.out.println("Invalid Option");
-                    return;
-                }
+                roomArray = hotel_ob.deluxe_doublerrom;
+                roomNumberOffset = 11;
                 break;
             case 3:
-                for (j = 0; j < hotel_ob.luxury_singleerrom.length; j++) {
-                    if (hotel_ob.luxury_singleerrom[j] == null) {
-                        System.out.print(j + 31 + ",");
-                    }
-                }
-                System.out.print("\nEnter room number: ");
-                try {
-                    rn = sc.nextInt();
-                    rn = rn - 31;
-                    if (hotel_ob.luxury_singleerrom[rn] != null)
-                        throw new NotAvailable();
-                    CustDetails(i, rn);
-                } catch (Exception e) {
-                    System.out.println("Invalid Option");
-                    return;
-                }
+                roomArray = hotel_ob.luxury_singleerrom;
+                roomNumberOffset = 31;
                 break;
             case 4:
-                for (j = 0; j < hotel_ob.deluxe_singleerrom.length; j++) {
-                    if (hotel_ob.deluxe_singleerrom[j] == null) {
-                        System.out.print(j + 41 + ",");
-                    }
-                }
-                System.out.print("\nEnter room number: ");
-                try {
-                    rn = sc.nextInt();
-                    rn = rn - 41;
-                    if (hotel_ob.deluxe_singleerrom[rn] != null)
-                        throw new NotAvailable();
-                    CustDetails(i, rn);
-                } catch (Exception e) {
-                    System.out.println("Invalid Option");
-                    return;
-                }
+                roomArray = hotel_ob.deluxe_singleerrom;
+                roomNumberOffset = 41;
                 break;
             default:
                 System.out.println("Enter valid option");
-                break;
+                return;
         }
-        System.out.println("Room Booked");
+
+        for (j = 0; j < roomArray.length; j++) {
+            if (roomArray[j] == null) {
+                System.out.print(j + roomNumberOffset + ",");
+            }
+        }
+        System.out.print("\nEnter room number: ");
+        try {
+            rn = sc.nextInt();
+            rn = rn - roomNumberOffset;
+            if (roomArray[rn] != null)
+                throw new NotAvailable(); 
+            CustDetails(i, rn);
+            System.out.println("Room Booked");
+        } catch (NotAvailable e) { 
+            System.out.println("Room not available");
+        } catch (Exception e) {
+            System.out.println("Invalid Option");
+        }
     }
 
     static void features(int i) {
@@ -331,79 +296,79 @@ class Hotel {
         System.out.println("\nTotal Amount - RM " + amount);
     }
 
-static void deallocate(int rn, int rtype) {
-    Doubleroom[] luxuryDoublerooms = hotel_ob.luxury_doublerrom;
-    Doubleroom[] deluxeDoublerooms = hotel_ob.deluxe_doublerrom;
-    Singleroom[] luxurySinglerooms = hotel_ob.luxury_singleerrom;
-    Singleroom[] deluxeSinglerooms = hotel_ob.deluxe_singleerrom;
+    static void deallocate(int rn, int rtype) {
+        Doubleroom[] luxuryDoublerooms = hotel_ob.luxury_doublerrom;
+        Doubleroom[] deluxeDoublerooms = hotel_ob.deluxe_doublerrom;
+        Singleroom[] luxurySinglerooms = hotel_ob.luxury_singleerrom;
+        Singleroom[] deluxeSinglerooms = hotel_ob.deluxe_singleerrom;
 
-    String roomType;
+        String roomType;
 
-    switch (rtype) {
-        case 1:
-            if (luxuryDoublerooms[rn] != null) {
-                System.out.println("Room used by " + luxuryDoublerooms[rn].name);
-            } else {
-                System.out.println("Empty Already");
-                return;
-            }
-            roomType = "luxury double";
-            break;
-        case 2:
-            if (deluxeDoublerooms[rn] != null) {
-                System.out.println("Room used by " + deluxeDoublerooms[rn].name);
-            } else {
-                System.out.println("Empty Already");
-                return;
-            }
-            roomType = "deluxe double";
-            break;
-        case 3:
-            if (luxurySinglerooms[rn] != null) {
-                System.out.println("Room used by " + luxurySinglerooms[rn].name);
-            } else {
-                System.out.println("Empty Already");
-                return;
-            }
-            roomType = "luxury single";
-            break;
-        case 4:
-            if (deluxeSinglerooms[rn] != null) {
-                System.out.println("Room used by " + deluxeSinglerooms[rn].name);
-            } else {
-                System.out.println("Empty Already");
-                return;
-            }
-            roomType = "deluxe single";
-            break;
-        default:
-            System.out.println("Enter a valid option");
-            return;
-    }
-
-    System.out.println("Do you want to checkout? (y/n)");
-    char w = sc.next().charAt(0);
-    if (w == 'y' || w == 'Y') {
-        bill(rn, rtype);
-        
         switch (rtype) {
             case 1:
-                luxuryDoublerooms[rn] = null;
+                if (luxuryDoublerooms[rn] != null) {
+                    System.out.println("Room used by " + luxuryDoublerooms[rn].name);
+                } else {
+                    System.out.println("Empty Already");
+                    return;
+                }
+                roomType = "luxury double";
                 break;
             case 2:
-                deluxeDoublerooms[rn] = null;
+                if (deluxeDoublerooms[rn] != null) {
+                    System.out.println("Room used by " + deluxeDoublerooms[rn].name);
+                } else {
+                    System.out.println("Empty Already");
+                    return;
+                }
+                roomType = "deluxe double";
                 break;
             case 3:
-                luxurySinglerooms[rn] = null;
+                if (luxurySinglerooms[rn] != null) {
+                    System.out.println("Room used by " + luxurySinglerooms[rn].name);
+                } else {
+                    System.out.println("Empty Already");
+                    return;
+                }
+                roomType = "luxury single";
                 break;
             case 4:
-                deluxeSinglerooms[rn] = null;
+                if (deluxeSinglerooms[rn] != null) {
+                    System.out.println("Room used by " + deluxeSinglerooms[rn].name);
+                } else {
+                    System.out.println("Empty Already");
+                    return;
+                }
+                roomType = "deluxe single";
                 break;
+            default:
+                System.out.println("Enter a valid option");
+                return;
         }
-        
-        System.out.println("Deallocated successfully");
+
+        System.out.println("Do you want to checkout? (y/n)");
+        char w = sc.next().charAt(0);
+        if (w == 'y' || w == 'Y') {
+            bill(rn, rtype);
+
+            switch (rtype) {
+                case 1:
+                    luxuryDoublerooms[rn] = null;
+                    break;
+                case 2:
+                    deluxeDoublerooms[rn] = null;
+                    break;
+                case 3:
+                    luxurySinglerooms[rn] = null;
+                    break;
+                case 4:
+                    deluxeSinglerooms[rn] = null;
+                    break;
+            }
+
+            System.out.println("Deallocated successfully");
+        }
     }
-}
 
     static void order(int rn, int rtype) {
         int i, q;
