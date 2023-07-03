@@ -9,6 +9,29 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
+class Billing {
+    private Customer customer;
+    private double totalAmount;
+
+    public Billing(Customer customer) {
+        this.customer = customer;
+        this.totalAmount = 0.0;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void addToBilling(double amount) {
+        totalAmount += amount;
+    }
+}
+
+
 class CleaningSchedule {
     private List<String> schedule;
 
