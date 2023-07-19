@@ -582,29 +582,51 @@ public class Main {
             char wish;
             x: do {
 
-                System.out.println(
-                        "\nEnter your choice :\n1.Display room details\n2.Display room availability \n3.Book\n4.Order food\n5.Checkout\n6.Exit\n");
+                System.out.println("\nEnter your choice :");
+                System.out.println("1. Display room details");
+                System.out.println("2. Display room availability");
+                System.out.println("3. Book a room");
+                System.out.println("4. Order food");
+                System.out.println("5. Checkout");
+                System.out.println("6. Customer Management");
+                System.out.println("7. Billings");
+                System.out.println("8. Cleaning Schedule");
+                System.out.println("9. Exit");
+
                 ch = sc.nextInt();
                 switch (ch) {
                     case 1:
-                        System.out.println(
-                                "\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room \n4.Deluxe Single Room\n");
+                        // Existing code for displaying room details
+                        System.out.println("\nChoose room type :");
+                        System.out.println("1. Luxury Double Room");
+                        System.out.println("2. Deluxe Double Room");
+                        System.out.println("3. Luxury Single Room");
+                        System.out.println("4. Deluxe Single Room");
                         ch2 = sc.nextInt();
                         Hotel.features(ch2);
                         break;
                     case 2:
-                        System.out.println(
-                                "\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room\n4.Deluxe Single Room\n");
+                        // Existing code for displaying room availability
+                        System.out.println("\nChoose room type :");
+                        System.out.println("1. Luxury Double Room");
+                        System.out.println("2. Deluxe Double Room");
+                        System.out.println("3. Luxury Single Room");
+                        System.out.println("4. Deluxe Single Room");
                         ch2 = sc.nextInt();
                         Hotel.availability(ch2);
                         break;
                     case 3:
-                        System.out.println(
-                                "\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room\n4.Deluxe Single Room\n");
+                        // Existing code for booking a room
+                        System.out.println("\nChoose room type :");
+                        System.out.println("1. Luxury Double Room");
+                        System.out.println("2. Deluxe Double Room");
+                        System.out.println("3. Luxury Single Room");
+                        System.out.println("4. Deluxe Single Room");
                         ch2 = sc.nextInt();
                         Hotel.bookroom(ch2);
                         break;
                     case 4:
+                        // Existing code for ordering food
                         System.out.print("Room Number - ");
                         ch2 = sc.nextInt();
                         if (ch2 > 60)
@@ -621,6 +643,7 @@ public class Main {
                             System.out.println("Room doesn't exist");
                         break;
                     case 5:
+                        // Existing code for checkout
                         System.out.print("Room Number - ");
                         ch2 = sc.nextInt();
                         if (ch2 > 60)
@@ -637,7 +660,77 @@ public class Main {
                             System.out.println("Room doesn't exist");
                         break;
                     case 6:
+                        // Customer Management
+                        System.out.println("\nCustomer Management");
+                        System.out.println("1. Display Customer Information");
+                        System.out.println("2. Delete Profile");
+                        System.out.println("3. Exit");
+                        int customerChoice = sc.nextInt();
+                        switch (customerChoice) {
+                            case 1:
+                                // Display customer information
+                                System.out.println("\nCustomer Information");
+                                System.out.println("Name: Zeyad");
+                                System.out.println("Age: 21");
+                                // Display other mock information as needed
+                                break;
+                            case 2:
+                                // Delete profile
+                                System.out.println("\nProfile deleted successfully");
+                                break;
+                            case 3:
+                                // Exit
+                                break;
+                            default:
+                                System.out.println("Invalid Option");
+                        }
+                        break;
+                    case 7:
+                        // Billings
+                        System.out.println("\nBillings");
+                        System.out.println("1. Display Billing Information");
+                        System.out.println("2. Exit");
+                        int billingChoice = sc.nextInt();
+                        switch (billingChoice) {
+                            case 1:
+                                System.out.println("\nBilling Information");
+                                System.out.println("Customer Name: Zeyad");
+                                System.out.println("Outstanding: RM 240");
+                                System.out.println("Last Paid Bill Date: 12/07/2023");
+                                System.out.println("Last Paid Bill Amount: RM 190");
+                                break;
+                            case 2:
+                                // Exit
+                                break;
+                            default:
+                                System.out.println("Invalid Option");
+                        }
+                        break;
+                    case 8:
+                        // Cleaning Schedule
+                        System.out.println("\nCleaning Schedule");
+                        System.out.println("1. Monday - 10:00 AM");
+                        System.out.println("2. Tuesday - 2:00 PM");
+                        System.out.println("3. Wednesday - 12:00 PM");
+                        System.out.println("4. Exit");
+                        int cleaningChoice = sc.nextInt();
+                        switch (cleaningChoice) {
+                            case 1:
+                            case 2:
+                            case 3:
+                                System.out.println("Cleaning booked successfully");
+                                break;
+                            case 4:
+                                // Exit
+                                break;
+                            default:
+                                System.out.println("Invalid Option");
+                        }
+                        break;
+                    case 9:
                         break x;
+                    default:
+                        System.out.println("Invalid Option");
                 }
                 System.out.println("\nContinue : (y/n)");
                 wish = sc.next().charAt(0);
